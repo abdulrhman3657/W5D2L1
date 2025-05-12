@@ -8,10 +8,13 @@ let textarea = document.getElementById("textarea");
 let userInfo = document.getElementById("userInfo");
 let url = document.getElementById("url");
 
+let list = []
 
 fetch('https://682199fa259dad2655afc100.mockapi.io/name')
     .then(response => response.json())
     .then(data => {
+
+    list = data
 
     data.forEach(element => {
 
@@ -26,12 +29,14 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
         let img = document.createElement("img")
         img.src = element.img
         img.style.width = "100%"
-        // img.classList.add("rounded-3")
+        img.classList.add("rounded-3")
 
         
 
         let del_btn = document.createElement("button")
         del_btn.innerText = "delete"
+        del_btn.classList.add("btn")
+        del_btn.classList.add("btn-danger")
 
         del_btn.addEventListener("click", () => {
             fetch(`https://682199fa259dad2655afc100.mockapi.io/name/${element.id}`, {
@@ -63,12 +68,38 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
 
     })
 
-
-
-
 btn.addEventListener("click", () => {
 
+    let err_msg =  document.getElementById("err-msg");
+    err_msg.style.color = "red"
 
+    if(username.value == "" || textarea.value == "" || url.value == ""){
+        err_msg.innerText = "all values must be filled"
+        return
+    }
+
+    if(username.value.length <= 4){
+        err_msg.innerText = "username must have more than 4 letters"
+        return
+    }
+    
+    if(textarea.value.length <= 6 ){
+        err_msg.innerText = "textarea must have more than 6 letters"
+        return
+    }
+
+    // ---------------------
+
+    let check = list.find((element) => {
+        return element.username == username.value
+    });
+
+    if(check){
+        err_msg.innerText = "user already exists"
+        return
+    }
+
+    // ---------------------
 
     fetch('https://682199fa259dad2655afc100.mockapi.io/name', {
         method: 'POST',
@@ -87,5 +118,14 @@ btn.addEventListener("click", () => {
 })
 
 
+
+
+            // let check = data.find((element) => {
+            //     return element == username.value
+            // });
+
+            // if(check){
+            //     err_msg.innerText = "user already exists"
+            // }
 
 
