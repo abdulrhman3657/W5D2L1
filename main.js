@@ -1,31 +1,5 @@
 
 
-// fetch('https://66e7e69ab17821a9d9da6e9d.mockapi.io/post', {
-//     method: 'POST',
-//     body: JSON.stringify({
-//                 username: "user1",
-//                 textarea: "hello world",
-//                 img: "https://images.pexels.com/photos/31901166/pexels-photo-31901166/free-photo-of-vintage-ceramic-pots-in-warm-tones.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-//     }),
-//     headers: {
-//         'Content-type': 'application/json; charset=UTF-8',
-//     },
-// })
-
-
-
-// fetch('', {
-//     method: 'POST',
-//     body: JSON.stringify({
-//                 username: "user1",
-//                 textarea: "hello world",
-//                 img: "https://images.pexels.com/photos/31901166/pexels-photo-31901166/free-photo-of-vintage-ceramic-pots-in-warm-tones.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-//     }),
-//     headers: {
-//         'Content-type': 'application/json; charset=UTF-8',
-//     },
-// })
-
 let container = document.getElementById("container");
 let card = document.getElementById("card");
 let btn = document.getElementById("btn");
@@ -60,7 +34,9 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
         del_btn.addEventListener("click", () => {
             fetch(`https://682199fa259dad2655afc100.mockapi.io/name/${element.id}`, {
             method: 'DELETE',
-            });  
+            }).then(() => {
+                location.reload();
+            })  
         
             
             // location.reload();
@@ -87,10 +63,11 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
 
     })
 
+
+
+
 btn.addEventListener("click", () => {
 
-    // console.log(username.value)
-    // console.log(url.value)
 
 
     fetch('https://682199fa259dad2655afc100.mockapi.io/name', {
@@ -102,6 +79,8 @@ btn.addEventListener("click", () => {
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
         },
+    }).then(() => {
+        location.reload();
     })
 
 })
