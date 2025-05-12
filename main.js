@@ -4,6 +4,7 @@ let container = document.getElementById("container");
 let card = document.getElementById("card");
 let btn = document.getElementById("btn");
 let username = document.getElementById("name");
+let textarea = document.getElementById("textarea");
 let userInfo = document.getElementById("userInfo");
 let url = document.getElementById("url");
 
@@ -19,7 +20,8 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
         let username = document.createElement("h4")
         username.innerText = element.username
 
-        console.log(element.url)
+        let textarea = document.createElement("p")
+        textarea.innerText = element.textarea
 
         let img = document.createElement("img")
         img.src = element.img
@@ -54,6 +56,7 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
 
         div.appendChild(username)
         div.appendChild(img)
+        div.appendChild(textarea)
         div.appendChild(del_btn)
 
 
@@ -74,6 +77,7 @@ btn.addEventListener("click", () => {
         method: 'POST',
         body: JSON.stringify({
                 username: username.value,
+                textarea: textarea.value,
                 img: url.value
         }),
         headers: {
