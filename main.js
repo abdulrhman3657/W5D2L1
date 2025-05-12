@@ -61,11 +61,15 @@ fetch('https://682199fa259dad2655afc100.mockapi.io/name')
             fetch(`https://682199fa259dad2655afc100.mockapi.io/name/${element.id}`, {
             method: 'DELETE',
             });  
+        
+            
+            // location.reload();
+        
         })
 
         div.classList.add("d-flex")
         div.classList.add("flex-column")
-        div.classList.add("w-50")
+        div.classList.add("w-25")
         div.classList.add("p-3")
         div.classList.add("m-3")
         div.classList.add("rounded-3")
